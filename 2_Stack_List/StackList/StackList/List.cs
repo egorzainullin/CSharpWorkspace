@@ -34,8 +34,9 @@ namespace StackList
             return value;
         }
 
-        public void RemoveByReference(ListElement position)
+        public void RemoveByReference()
         {
+            ListElement position = this;
             if (position != null && position.next != null)
             {
                 position.next = position.next.next;
@@ -130,7 +131,7 @@ namespace StackList
             {
                 while (iterator != null && iterator.Next() != null && iterator.Next().Value() == value)
                 {
-                    iterator.RemoveByReference(iterator);
+                    iterator.RemoveByReference();
                     --Length;
                 }
                 iterator = iterator.Next();
