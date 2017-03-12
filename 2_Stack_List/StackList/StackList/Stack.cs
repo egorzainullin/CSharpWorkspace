@@ -18,6 +18,7 @@ namespace StackList
                 this.value = value;
             }
         }
+
         private StackElement head;
 
         public Stack()
