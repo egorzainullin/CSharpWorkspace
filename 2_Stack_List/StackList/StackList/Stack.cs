@@ -54,6 +54,11 @@ namespace StackList
             return head.value;
         }
 
+        public bool isEmpty()
+        {
+            return head == null;
+        }
+
         public void Print()
         {
             StackElement iterator = head;
