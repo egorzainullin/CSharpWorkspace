@@ -59,6 +59,14 @@ namespace StackList
             return head == null;
         }
 
+        public void Clear()
+        {
+            while (head != null)
+            {
+                Pop();
+            }
+        }
+
         public void Print()
         {
             StackElement iterator = head;

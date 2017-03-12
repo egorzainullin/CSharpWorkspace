@@ -97,6 +97,14 @@ namespace StackList
             return value;
         }
 
+        public void Clear()
+        {
+            while (head != null)
+            {
+                DeleteFromHead();
+            }
+        }
+
         public int Peek()
         {
             if (head == null)
@@ -118,6 +126,11 @@ namespace StackList
                 iterator = iterator.Next();
             }
             return false;
+        }
+
+        public bool isEmpty()
+        {
+            return head == null;
         }
 
         public void Remove(int value)
