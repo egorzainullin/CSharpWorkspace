@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// класс Список, необходимый для таблицы
+/// класс Список
 /// </summary>
 namespace HashTable
 {
@@ -8,7 +8,7 @@ namespace HashTable
     /// <summary>
     /// Класс Список
     /// </summary>
-    public class List : IList
+    public class List
     {
         /// <summary>
         /// класс элемент списка
@@ -16,54 +16,42 @@ namespace HashTable
         private class ListElement
         {
             /// <summary>
-            /// приватное поле: следующий элемент
-            /// </summary>
-
-            private ListElement next;
-
-            /// <summary>
-            /// приватное поле: значение
-            /// </summary>
-            private int value;
-
-            /// <summary>
             /// перекрытый метод ToString(), возвращающий значение элемента списка
             /// </summary>
             public override string ToString()
             {
-                return "Value " + value;
+                return "Value " + Value;
             }
 
             /// <summary>
-            /// конструктор с параметрами
+            /// конструктор, создающий новый экземпляр класса <see cref="ListElement"/>
             /// </summary>
             /// <param name="next"> следующий элемент </param>
             /// <param name="value"> значение </param>
             public ListElement(ListElement next, int value)
             {
-                this.next = next;
-                this.value = value;
+                this.Next = next;
+                this.Value = value;
             }
 
             /// <summary>
             /// следующий элемент списка
             /// </summary>
-            public ListElement Next { get { return next; } private set { next = Next; } }
+            public ListElement Next { get; set; }
 
             /// <summary>
             /// значение элемента списка
             /// </summary>
-            public int Value { get { return value; } private set { value = Value; } }
+            public int Value { get; set; }
 
             /// <summary>
             /// удаляет следующий элемент за данным, если удаление невозможно, ничего не делает
             /// </summary>
             public void RemoveByReference()
             {
-                ListElement position = this;
-                if (position != null && position.next != null)
+                if (this.Next != null)
                 {
-                    position.next = position.next.next;
+                    this.Next = this.Next.Next;
                 }
             }
         }
@@ -76,10 +64,6 @@ namespace HashTable
         /// <summary>
         /// голова списка
         /// </summary>
-        private ListElement Head => head;
-        /// <summary>
-        /// вспомогательное поле для свойства Head
-        /// </summary>
         private ListElement head;
 
         /// <summary>
@@ -87,8 +71,7 @@ namespace HashTable
         /// </summary>
         public List()
         {
-            head = null;
-            Length = 0;
+
         }
 
         /// <summary>
