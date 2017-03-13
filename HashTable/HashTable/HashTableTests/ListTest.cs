@@ -38,7 +38,7 @@ namespace HashTableTests
             list.Add(2);
             list.Add(3);
             Assert.AreEqual(3, list.Length);
-            Assert.AreEqual(3, list.Head.Value);
+            Assert.AreEqual(3, list.Peek());
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace HashTableTests
             list.Add(2);
             list.Add(3);
             list.Clear();
-            Assert.AreEqual(null, list.Head);
+            Assert.AreEqual(true, list.isEmpty());
         }
 
         [TestMethod]
