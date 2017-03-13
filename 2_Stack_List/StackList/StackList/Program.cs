@@ -25,7 +25,7 @@ namespace StackList
             Console.WriteLine("====");
             Console.WriteLine(list.Peek());
             Console.WriteLine(list.Length);
-            Console.WriteLine(list.IsContains(4));
+            Console.WriteLine(list.IsContaining(4));
             return stack.Length == 2 && list.Length == 1 && list.Peek() == 3;
         }
 
