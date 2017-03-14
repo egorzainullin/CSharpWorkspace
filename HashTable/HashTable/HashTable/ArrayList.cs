@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HashTable
+namespace HashTableProject
 {
     public class ArrayList : IList
     {

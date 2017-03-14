@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// класс Список
 /// </summary>
-namespace HashTable
+namespace HashTableProject
 {
     using System;
 

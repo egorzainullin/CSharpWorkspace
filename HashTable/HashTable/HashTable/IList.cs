@@ -1,4 +1,4 @@
-﻿namespace HashTable
+﻿namespace HashTableProject
 {
     public interface IList
     {

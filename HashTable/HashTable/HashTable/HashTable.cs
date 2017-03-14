@@ -1,13 +1,18 @@
 ﻿using System;
 
-namespace HashTable
+namespace HashTableProject
 {
-    class HashTable
+    public class HashTable
     {
         /// <summary>
         /// размер таблицы
         /// </summary>
         private int tableSize = 997;
+
+        /// <summary>
+        /// количество элементов в таблице
+        /// </summary>
+        public int NumberOfElements { get; private set; }
 
         /// <summary>
         /// массив списков, необходимый для работы хэш-таблицы, каждый элемент соответствует возможному хэшу
@@ -47,13 +52,26 @@ namespace HashTable
                 return result;
             }
         }
+
+        /// <summary>
+        /// Инициализирует массив списков
+        /// </summary>
+        private void InitializeListArr()
+        {
+            hashLists = new IList[tableSize];
+        }
+
         /// <summary>
         /// Создает новый экземпляр класса <see cref="HashTable"/> и инициализирует значениями по умолчанию 
         /// </summary>
         public HashTable()
         {
             hashFunction = new StandartHashFunction();
-            hashLists = new List[tableSize];
+            InitializeListArr();
+            for (int i = 0; i < tableSize; i++)
+            {
+                hashLists[i] = new List();
+            }
         }
 
         /// <summary>
@@ -63,7 +81,11 @@ namespace HashTable
         public HashTable(IHashFunction GotHashFunction)
         {
             hashFunction = GotHashFunction;
-            hashLists = new List[tableSize];
+            InitializeListArr();
+            for (int i = 0; i < tableSize; i++)
+            {
+                hashLists[i] = new List();
+            }
         }
 
         /// <summary>
@@ -86,6 +108,7 @@ namespace HashTable
             if (!hashLists[hash].IsContaining(value))
             {
                 hashLists[hash].Add(value);
+                ++NumberOfElements;
             }
         }
 
@@ -99,6 +122,7 @@ namespace HashTable
             if (hashLists[hash].IsContaining(value))
             {
                 hashLists[hash].Remove(value);
+                --NumberOfElements;
             }
         }
     }

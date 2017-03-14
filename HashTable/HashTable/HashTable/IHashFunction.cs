@@ -1,6 +1,6 @@
-﻿namespace HashTable
+﻿namespace HashTableProject
 {
-    interface IHashFunction
+    public interface IHashFunction
     {
         /// <summary>
         /// посчитать значение хэш-функции
