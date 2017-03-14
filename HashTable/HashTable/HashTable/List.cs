@@ -8,7 +8,7 @@ namespace HashTable
     /// <summary>
     /// Класс Список
     /// </summary>
-    public class List
+    public class List : IList
     {
         /// <summary>
         /// класс элемент списка

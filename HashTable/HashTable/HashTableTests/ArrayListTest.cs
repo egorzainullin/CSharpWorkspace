@@ -96,5 +96,15 @@ namespace ListArrayTests
             Assert.AreEqual(false, list.IsContaining(1));
             Assert.AreEqual(2, list.Length);
         }
+
+        [TestMethod]
+        public void ArrayLengthTest()
+        {
+            var list = new ArrayList();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            Assert.AreEqual(3, list.Length);
+        }
     }
 }

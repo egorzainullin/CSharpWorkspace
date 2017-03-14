@@ -93,5 +93,15 @@ namespace HashTableTests
             list.Remove(1);
             Assert.AreEqual(false, list.IsContaining(1));
         }
+
+        [TestMethod]
+        public void LengthTest()
+        {
+            var list = new List();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            Assert.AreEqual(3, list.Length);
+        }
     }
 }
