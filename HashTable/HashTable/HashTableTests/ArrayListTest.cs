@@ -45,9 +45,9 @@ namespace ListArrayTests
         public void ArrayisEmptyTest()
         {
             var list = new ArrayList();
-            Assert.AreEqual(true, list.isEmpty());
+            Assert.AreEqual(true, list.IsEmpty());
             list.Add(1);
-            Assert.AreEqual(false, list.isEmpty());
+            Assert.AreEqual(false, list.IsEmpty());
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace ListArrayTests
             list.Add(2);
             list.Add(3);
             list.Clear();
-            Assert.AreEqual(true, list.isEmpty());
+            Assert.AreEqual(true, list.IsEmpty());
         }
 
         [TestMethod]

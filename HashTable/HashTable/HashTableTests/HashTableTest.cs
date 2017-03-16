@@ -37,8 +37,8 @@ namespace HashTableTests
             hashTable.Add(2);
             hashTable.Add(3);
             hashTable.Remove(2);
-            Assert.AreEqual(false, hashTable.isContaining(2));
-            Assert.AreEqual(true, hashTable.isContaining(3));
+            Assert.AreEqual(false, hashTable.IsContaining(2));
+            Assert.AreEqual(true, hashTable.IsContaining(3));
         }
 
         [TestMethod]
@@ -49,8 +49,8 @@ namespace HashTableTests
             hashTable.Add(2);
             hashTable.Add(3);
             hashTable.Remove(2);
-            Assert.AreEqual(false, hashTable.isContaining(2));
-            Assert.AreEqual(true, hashTable.isContaining(3));
+            Assert.AreEqual(false, hashTable.IsContaining(2));
+            Assert.AreEqual(true, hashTable.IsContaining(3));
         }
     }
 }

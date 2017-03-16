@@ -1,12 +1,15 @@
 ﻿namespace HashTableProject
 {
+    /// <summary>
+    /// Интерфейс хэш-функции
+    /// </summary>
     public interface IHashFunction
     {
         /// <summary>
-        /// посчитать значение хэш-функции
+        /// Посчитать значение хэш-функции
         /// </summary>
-        /// <param name="value">значение, для которого нужно посчитать значение</param>
-        /// <returns>возвращает хэш-код</returns>
+        /// <param name="value">Значение, для которого нужно посчитать значение</param>
+        /// <returns>Возвращает хэш-код</returns>
         int Calculate(int value);
     }
 }

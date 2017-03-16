@@ -19,7 +19,7 @@ namespace HashTableTests
             Assert.AreEqual(2, list.Pop());
         }
 
-        [TestMethod]
+       [TestMethod]
         public void PeekTest1()
         {
             var list = new List();
@@ -45,9 +45,9 @@ namespace HashTableTests
         public void isEmptyTest()
         {
             var list = new List();
-            Assert.AreEqual(true, list.isEmpty());
+            Assert.AreEqual(true, list.IsEmpty());
             list.Add(1);
-            Assert.AreEqual(false, list.isEmpty());
+            Assert.AreEqual(false, list.IsEmpty());
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace HashTableTests
             list.Add(2);
             list.Add(3);
             list.Clear();
-            Assert.AreEqual(true, list.isEmpty());
+            Assert.AreEqual(true, list.IsEmpty());
         }
 
         [TestMethod]

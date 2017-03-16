@@ -2,25 +2,28 @@
 
 namespace HashTableProject
 {
+    /// <summary>
+    /// Список на массивах
+    /// </summary>
     public class ArrayList : IList
     {
         /// <summary>
-        /// длина списка
+        /// Длина списка
         /// </summary>
         public int Length => pointer + 1;
 
         /// <summary>
-        /// вспомогательный массив для хранения элементов списка
+        /// Вспомогательный массив для хранения элементов списка
         /// </summary>
         private int[] arr = new int[1000];
 
         /// <summary>
-        /// указатель на последний элемент
+        /// Указатель на последний элемент
         /// </summary>
         private int pointer = -1;
 
         /// <summary>
-        /// конструктор, создающий новый экземпляр класса <see cref="ArrayList"/>
+        /// Конструктор, создающий новый экземпляр класса <see cref="ArrayList"/>
         /// </summary>
         public ArrayList()
         {
@@ -28,9 +31,9 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// добавляет элемент в список
+        /// Добавляет элемент в список
         /// </summary>
-        /// <param name="value">значение, которое необходимо добавить</param>
+        /// <param name="value">Значение, которое необходимо добавить</param>
         public void Add(int value)
         {
             ++pointer;
@@ -38,7 +41,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// очистить список
+        /// Очистить список
         /// </summary>
         public void Clear()
         {
@@ -46,7 +49,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// удалить элемент из головы
+        /// Удалить элемент из головы
         /// </summary>
         public void DeleteFromHead()
         {
@@ -54,10 +57,10 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// проверка элемента на принадлежность
+        /// Проверка элемента на принадлежность
         /// </summary>
-        /// <param name="value">значение, которое необходимо проверить на принадлежность</param>
-        /// <returns>возвращает true, если принадлежит</returns>
+        /// <param name="value">Значение, которое необходимо проверить на принадлежность</param>
+        /// <returns>Возвращает true, если принадлежит</returns>
         public bool IsContaining(int value)
         {
             for (int i = 0; i <= pointer; i++)
@@ -71,16 +74,16 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// проверяет список на пустоту
+        /// Проверяет список на пустоту
         /// </summary>
-        /// <returns>возвращает true, если пуст</returns>
-        public bool isEmpty()
+        /// <returns>Возвращает true, если пуст</returns>
+        public bool IsEmpty()
         {
             return pointer == -1;
         }
 
         /// <summary>
-        /// возвращает значение из головы
+        /// Возвращает значение из головы
         /// </summary>
         /// <returns></returns>
         public int Peek()
@@ -89,7 +92,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// выталкивает элемент из головы
+        /// Выталкивает элемент из головы
         /// </summary>
         /// <returns></returns>
         public int Pop()
@@ -98,7 +101,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// печатает элементы из списка
+        /// Печатает элементы из списка
         /// </summary>
         public void Print()
         {
@@ -109,7 +112,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// вспомогательная функция, которая удаляет данный элемент и сдвигает следующие в его сторону
+        /// Вспомогательная функция, которая удаляет данный элемент и сдвигает следующие в его сторону
         /// </summary>
         /// <param name="elementNumber">элемент, который необходимо удалить</param>
         private void MoveAfterDelete(int elementNumber)
@@ -122,7 +125,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// удалить все элементы списка с таким значением
+        /// Удалить все элементы списка с таким значением
         /// </summary>
         /// <param name="value">значение, которое необходимо удалить из списка</param>
         public void Remove(int value)

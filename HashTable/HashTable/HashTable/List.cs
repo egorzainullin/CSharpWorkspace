@@ -11,20 +11,12 @@ namespace HashTableProject
     public class List : IList
     {
         /// <summary>
-        /// класс элемент списка
+        /// Класс элемент списка
         /// </summary>
         private class ListElement
         {
             /// <summary>
-            /// перекрытый метод ToString(), возвращающий значение элемента списка
-            /// </summary>
-            public override string ToString()
-            {
-                return "Value " + Value;
-            }
-
-            /// <summary>
-            /// конструктор, создающий новый экземпляр класса <see cref="ListElement"/>
+            /// Конструктор, создающий новый экземпляр класса <see cref="ListElement"/>
             /// </summary>
             /// <param name="next"> следующий элемент </param>
             /// <param name="value"> значение </param>
@@ -35,7 +27,7 @@ namespace HashTableProject
             }
 
             /// <summary>
-            /// следующий элемент списка
+            /// Следующий элемент списка
             /// </summary>
             public ListElement Next { get; set; }
 
@@ -45,7 +37,7 @@ namespace HashTableProject
             public int Value { get; set; }
 
             /// <summary>
-            /// удаляет следующий элемент за данным, если удаление невозможно, ничего не делает
+            /// Удаляет следующий элемент за данным, если удаление невозможно, ничего не делает
             /// </summary>
             public void RemoveByReference()
             {
@@ -57,25 +49,17 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// свойство: длина списка
+        /// Свойство: длина списка
         /// </summary>
         public int Length { get; private set; }
 
         /// <summary>
-        /// голова списка
+        /// Голова списка
         /// </summary>
         private ListElement head;
-
+        
         /// <summary>
-        /// конструктор списка
-        /// </summary>
-        public List()
-        {
-
-        }
-
-        /// <summary>
-        /// печатает список, выводя каждое значение на своей строке
+        /// Печатает список, выводя каждое значение на своей строке
         /// </summary>
         public void Print()
         {
@@ -99,7 +83,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// удаляет элемент из головы списка
+        /// Удаляет элемент из головы списка
         /// </summary>
         public void DeleteFromHead()
         {
@@ -112,7 +96,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// достает значение из головы, удаляет его из списка
+        /// Достает значение из головы, удаляет его из списка
         /// </summary>
         /// <returns></returns>
         public int Pop()
@@ -128,7 +112,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// очищает список
+        /// Очищает список
         /// </summary>
         public void Clear()
         {
@@ -139,7 +123,7 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// достает значение из головы
+        /// Достает значение из головы
         /// </summary>
         /// <returns></returns>
         public int Peek()
@@ -152,9 +136,9 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// проверят на принадлежность
+        /// Проверят на принадлежность
         /// </summary>
-        /// <param name="value">значение, которое надо проверить на принадлежность</param>
+        /// <param name="value">Значение, которое надо проверить на принадлежность</param>
         /// <returns></returns>
         public bool IsContaining(int value)
         {
@@ -171,15 +155,15 @@ namespace HashTableProject
         }
 
         /// <summary>
-        /// проверяет на пустоту
+        /// Проверяет на пустоту
         /// </summary>
-        public bool isEmpty()
+        public bool IsEmpty()
         {
             return head == null;
         }
 
         /// <summary>
-        /// удаляет все элементы из списка по значению
+        /// Удаляет все элементы из списка по значению
         /// </summary>
         /// <param name="value"></param>
         public void Remove(int value)
