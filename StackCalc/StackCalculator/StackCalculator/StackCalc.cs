@@ -40,52 +40,59 @@
         /// <returns></returns>
         public int Calculate(string expression)
         {
-            string number = "";
-            for (int i = 0; i < expression.Length; i++)
+            try
             {
-                int firstOperand;
-                int secondOperand;
-                switch (expression[i])
+                string number = "";
+                for (int i = 0; i < expression.Length; i++)
                 {
-                    case '+':
-                        PushNumber(ref number);
-                        secondOperand = stack.Pop();
-                        firstOperand = stack.Pop();
-                        stack.Push(firstOperand + secondOperand);
-                        break;
-                    case '-':
-                        PushNumber(ref number);
-                        secondOperand = stack.Pop();
-                        firstOperand = stack.Pop();
-                        stack.Push(firstOperand - secondOperand);
-                        break;
-                    case '/':
-                        PushNumber(ref number);
-                        secondOperand = stack.Pop();
-                        firstOperand = stack.Pop();
-                        stack.Push(firstOperand / secondOperand);
-                        break;
-                    case '*':
-                        PushNumber(ref number);
-                        secondOperand = stack.Pop();
-                        firstOperand = stack.Pop();
-                        stack.Push(firstOperand * secondOperand);
-                        break;
-                    case ' ':
-                        PushNumber(ref number);
-                        break;
-                    default:
-                        if (expression[i] > '9' || expression[i] < '0')
-                        {
-                            throw new System.ArgumentException("Некорректный символ");
-                        }
-                        number += expression[i];
-                        break;
+                    int firstOperand;
+                    int secondOperand;
+                    switch (expression[i])
+                    {
+                        case '+':
+                            PushNumber(ref number);
+                            secondOperand = stack.Pop();
+                            firstOperand = stack.Pop();
+                            stack.Push(firstOperand + secondOperand);
+                            break;
+                        case '-':
+                            PushNumber(ref number);
+                            secondOperand = stack.Pop();
+                            firstOperand = stack.Pop();
+                            stack.Push(firstOperand - secondOperand);
+                            break;
+                        case '/':
+                            PushNumber(ref number);
+                            secondOperand = stack.Pop();
+                            firstOperand = stack.Pop();
+                            stack.Push(firstOperand / secondOperand);
+                            break;
+                        case '*':
+                            PushNumber(ref number);
+                            secondOperand = stack.Pop();
+                            firstOperand = stack.Pop();
+                            stack.Push(firstOperand * secondOperand);
+                            break;
+                        case ' ':
+                            PushNumber(ref number);
+                            break;
+                        default:
+                            if (expression[i] > '9' || expression[i] < '0')
+                            {
+                                throw new System.ArgumentException("Некорректный символ");
+                            }
+                            number += expression[i];
+                            break;
+                    }
+                }
+                if (number != "")
+                {
+                    PushNumber(ref number);
                 }
             }
-            if (number != "")
+            catch (EmptyStackException)
             {
-                PushNumber(ref number);
+                throw new System.ArgumentException("Некорректное выражение");
             }
             return stack.Pop();
         }

@@ -38,5 +38,12 @@ namespace StackCalculatorTests
         {
             stackCalc.Calculate("you have been successfully kicked from university");
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(System.ArgumentException))]
+        public void CalculateInvalidExpressionTest()
+        {
+            stackCalc.Calculate("1+");
+        }
     }
 }
