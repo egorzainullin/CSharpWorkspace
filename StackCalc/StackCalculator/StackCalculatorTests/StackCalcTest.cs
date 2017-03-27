@@ -36,7 +36,7 @@ namespace StackCalculatorTests
         [ExpectedException(typeof(System.ArgumentException))]
         public void CalculateInvalidArgTest()
         {
-            stackCalc.Calculate("you have been successfully kicked from university");
+            stackCalc.Calculate("lololo");
         }
 
         [TestMethod]
