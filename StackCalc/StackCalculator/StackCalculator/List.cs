@@ -114,13 +114,7 @@ namespace StackCalculator
         /// <summary>
         /// Очищает список
         /// </summary>
-        public void Clear()
-        {
-            while (head != null)
-            {
-                DeleteFromHead();
-            }
-        }
+        public void Clear() => head = null;
 
         /// <summary>
         /// Достает значение из головы
@@ -157,10 +151,7 @@ namespace StackCalculator
         /// <summary>
         /// Проверяет на пустоту
         /// </summary>
-        public bool IsEmpty()
-        {
-            return head == null;
-        }
+        public bool IsEmpty() => head == null;
 
         /// <summary>
         /// Удаляет все элементы из списка по значению
@@ -185,7 +176,7 @@ namespace StackCalculator
         }
 
         /// <summary>
-        /// Реализует интерфейс стека
+        /// Реализует интерфейс стека, добавляет значение
         /// </summary>
         /// <param name="value">Значение, которое необходимо добавить</param>
         public void Push(int value)

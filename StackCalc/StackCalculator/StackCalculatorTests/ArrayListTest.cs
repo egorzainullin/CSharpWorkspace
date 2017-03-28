@@ -10,6 +10,7 @@ namespace ListArrayTests
     public class ListTest
     {
         private ArrayList list;
+
         [TestInitialize]
         public void InitializeList()
         {
@@ -41,7 +42,7 @@ namespace ListArrayTests
         }
 
         [TestMethod]
-        public void ArrayisEmptyTest()
+        public void ArrayIsEmptyTest()
         {
             var list = new ArrayList();
             Assert.AreEqual(true, list.IsEmpty());
@@ -50,10 +51,10 @@ namespace ListArrayTests
         }
 
         [TestMethod]
-        public void ArrayArrayClearTest()
+        public void ArrayClearTest()
         {
             list.Clear();
-            Assert.AreEqual(true, list.IsEmpty());
+            Assert.IsTrue(list.IsEmpty());
         }
 
         [TestMethod]
@@ -64,10 +65,10 @@ namespace ListArrayTests
         }
 
         [TestMethod]
-        public void ArrayisContainingTest1()
+        public void ArrayIsContainingTest1()
         {
-            Assert.AreEqual(true, list.IsContaining(2));
-            Assert.AreEqual(false, list.IsContaining(5));
+            Assert.IsTrue(list.IsContaining(2));
+            Assert.IsFalse(list.IsContaining(5));
         }
 
         [TestMethod]
@@ -108,6 +109,17 @@ namespace ListArrayTests
         {
             var list = new ArrayList();
             list.Peek();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void OutOfRangeStackExceptionTest2()
+        {
+            var list = new ArrayList();
+            for (int i = 0; i <1001; i++)
+            {
+                list.Add(1);
+            }
         }
     }
 }

@@ -24,13 +24,12 @@
         /// Сохраняет число из строки в стек
         /// </summary>
         /// <param name="number"></param>
-        private void PushNumber(ref string number)
+        private void PushNumber(string number)
         {
             if (number != "")
             {
                 stack.Push(System.Int32.Parse(number));
             }
-            number = "";
         }
 
         /// <summary>
@@ -50,31 +49,36 @@
                     switch (expression[i])
                     {
                         case '+':
-                            PushNumber(ref number);
+                            PushNumber(number);
+                            number = "";
                             secondOperand = stack.Pop();
                             firstOperand = stack.Pop();
                             stack.Push(firstOperand + secondOperand);
                             break;
                         case '-':
-                            PushNumber(ref number);
+                            PushNumber(number);
+                            number = "";
                             secondOperand = stack.Pop();
                             firstOperand = stack.Pop();
                             stack.Push(firstOperand - secondOperand);
                             break;
                         case '/':
-                            PushNumber(ref number);
+                            PushNumber(number);
+                            number = "";
                             secondOperand = stack.Pop();
                             firstOperand = stack.Pop();
                             stack.Push(firstOperand / secondOperand);
                             break;
                         case '*':
-                            PushNumber(ref number);
+                            PushNumber(number);
+                            number = "";
                             secondOperand = stack.Pop();
                             firstOperand = stack.Pop();
                             stack.Push(firstOperand * secondOperand);
                             break;
                         case ' ':
-                            PushNumber(ref number);
+                            PushNumber(number);
+                            number = "";
                             break;
                         default:
                             if (expression[i] > '9' || expression[i] < '0')
@@ -87,14 +91,29 @@
                 }
                 if (number != "")
                 {
-                    PushNumber(ref number);
+                    PushNumber(number);
+                    number = "";
                 }
+                int result = stack.Pop();
+                if (!stack.IsEmpty())
+                {
+                    throw new System.ArgumentException("Некорректное выражение");
+                }
+                return result;
             }
             catch (EmptyStackException)
             {
                 throw new System.ArgumentException("Некорректное выражение");
             }
-            return stack.Pop();
+            catch (System.IndexOutOfRangeException)
+            {
+                throw new System.ArgumentException("Слишком длинное выражение");
+            }
+
+            catch (System.DivideByZeroException)
+            {
+                throw new System.ArgumentException("Деление на ноль");
+            }
         }
 
     }

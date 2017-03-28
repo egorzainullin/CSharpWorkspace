@@ -2,11 +2,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StackCalculator;
 
-namespace HashTableTests
+namespace ListTests
 {
+    /// <summary>
+    /// Тестирование класса список
+    /// </summary>
     [TestClass]
-    // тестирование класса Список
-
     public class ListTest
     {
         private List list;
@@ -46,7 +47,7 @@ namespace HashTableTests
             var list = new List();
             Assert.AreEqual(true, list.IsEmpty());
             list.Add(1);
-            Assert.AreEqual(false, list.IsEmpty());
+            Assert.IsFalse(list.IsEmpty());
         }
 
         [TestMethod]
@@ -66,8 +67,8 @@ namespace HashTableTests
         [TestMethod]
         public void IsContainingTest1()
         {
-            Assert.AreEqual(true, list.IsContaining(2));
-            Assert.AreEqual(false, list.IsContaining(5));
+            Assert.IsTrue(list.IsContaining(2));
+            Assert.IsFalse(list.IsContaining(5));
         }
 
         [TestMethod]

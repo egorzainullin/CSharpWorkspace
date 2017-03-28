@@ -33,17 +33,48 @@ namespace StackCalculatorTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(System.ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void CalculateInvalidArgTest()
         {
             stackCalc.Calculate("lololo");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(System.ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void CalculateInvalidExpressionTest()
         {
             stackCalc.Calculate("1+");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void CalculateInvalidExpressionTest2()
+        {
+            stackCalc.Calculate("1 0 /");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void CalculateInvalidExpressionTest3()
+        {
+            stackCalc.Calculate("1  /");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void CalculateTooLongExpressionTest()
+        {
+            stackCalc = new StackCalc(new ArrayList());
+            string expression = "";
+            for (int i = 0; i < 1001; ++i)
+            {
+                expression += "1 ";
+            }
+            for (int i = 0; i < 1000; ++i)
+            {
+                expression += "+ ";
+            }
+            stackCalc.Calculate(expression);
         }
     }
 }

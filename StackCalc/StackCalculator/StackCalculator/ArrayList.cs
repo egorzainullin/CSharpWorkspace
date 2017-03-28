@@ -26,28 +26,27 @@ namespace StackCalculator
         /// Добавляет элемент в список
         /// </summary>
         /// <param name="value">Значение, которое необходимо добавить</param>
+        /// <exception cref="IndexOutOfRangeException" />
         public void Add(int value)
         {
             ++pointer;
+            if (pointer >= 1000)
+            {
+                throw new IndexOutOfRangeException("Выход за границу списка");
+            }
             arr[pointer] = value;
         }
 
         /// <summary>
         /// Очистить список
         /// </summary>
-        public void Clear()
-        {
-            pointer = -1;
-        }
+        public void Clear() => pointer = -1;
 
         /// <summary>
         /// Удалить элемент из головы
         /// </summary>
-        public void DeleteFromHead()
-        {
-            --pointer;
-        }
-
+        public void DeleteFromHead() => --pointer;
+        
         /// <summary>
         /// Проверка элемента на принадлежность
         /// </summary>
@@ -69,10 +68,7 @@ namespace StackCalculator
         /// Проверяет список на пустоту
         /// </summary>
         /// <returns>Возвращает true, если пуст</returns>
-        public bool IsEmpty()
-        {
-            return pointer == -1;
-        }
+        public bool IsEmpty() => pointer == -1;
 
         /// <summary>
         /// Возвращает значение из головы

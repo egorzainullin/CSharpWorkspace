@@ -26,14 +26,14 @@
         /// Возвращает значение из головы
         /// </summary>
         /// <returns></returns>
-        /// /// <exception cref="EmptyStackException"
+        /// /// <exception cref="EmptyStackException" />
         int Peek();
 
         /// <summary>
         /// Возвращает значение из головы, удаляет его из стека
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="EmptyStackException"
+        /// <exception cref="EmptyStackException" />
         int Pop();
 
         /// <summary>
