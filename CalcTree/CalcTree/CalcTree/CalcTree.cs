@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CalcTree
+namespace CalculationTree
 {
     /// <summary>
     /// Класс дерево разбора
@@ -8,9 +8,8 @@ namespace CalcTree
     public class CalcTree
     {
         /// <summary>
-        /// Элемент дерева: оператор или число
+        /// Корень дерева
         /// </summary>
-
         private TreeElement root;
 
         /// <summary>
@@ -18,7 +17,17 @@ namespace CalcTree
         /// </summary>
         /// <returns></returns>
         public int Calculate() => root.Calculate();
+
+        /// <summary>
+        /// Печатает дерево
+        /// </summary>
+        public string Print() => root.PrintTree();
         
+        /// <summary>
+        /// Генерирует дерево по заданному выражению
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         private TreeElement GenerateTree(string expression)
         {
             if (expression[0] != '(')
@@ -83,10 +92,13 @@ namespace CalcTree
             root = GenerateTree(expression);
         }
 
+        /// <summary>
+        /// Элемент дерева: оператор или число
+        /// </summary>
         private class TreeElement
         {
             /// <summary>
-            /// Посмотреть значение вершины
+            /// Свойство: значение в вершине
             /// </summary>
             public string Value => value;
 
@@ -97,6 +109,12 @@ namespace CalcTree
             private string value;
 
             /// <summary>
+            /// Проверяет, является ли вершина оператором
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOperator() => value == "+" || value == "-" || value == "*" || value == "/";
+
+            /// <summary>
             /// Левый ребенок оператора
             /// </summary>
             private TreeElement leftChild;
@@ -105,14 +123,47 @@ namespace CalcTree
             /// Правый ребенок оператора
             /// </summary>
             private TreeElement rightChild;
-            
+
+            /// <summary>
+            /// Сохраняет дерево в строку, начиная с root
+            /// </summary>
+            /// <param name="root"></param>
+            private string PrintTree(TreeElement root)
+            {
+                if (root == null)
+                {
+                    return "";
+                }
+                string outString = "";
+                if (root.IsOperator())
+                {
+                    outString = "(" + root.Value + " " + PrintTree(root.leftChild) + " " + PrintTree(root.rightChild) + ")";
+                }
+                else
+                {
+                    outString = root.Value;
+                }
+                return outString;
+            }
+
+            /// <summary>
+            /// Печатает дерево, начиная с этой вершины
+            /// </summary>
+            /// <param name="root"></param>
+            public string PrintTree()
+            {
+                string outString = PrintTree(this);
+                Console.WriteLine(outString);
+                return outString;
+            }
+
             /// <summary>
             /// Посчитать значение, начиная с этой вершины
             /// </summary>
             /// <returns>Посчитанное значение</returns>
             public int Calculate()
             {
-                switch(value)
+                switch (value)
                 {
                     case "+":
                         return leftChild.Calculate() + rightChild.Calculate();
@@ -150,13 +201,13 @@ namespace CalcTree
             /// </summary>
             /// <param name="value">Число</param>
             public TreeElement(string value)
-                :this(value, null, null)
+                : this(value, null, null)
             { }
 
             /// <summary>
             /// Печатает оператор / операнд на консоль
             /// </summary>
-            public void Print() => Console.WriteLine(value);
+            public void Print() => Console.Write(value);
         }
     }
 }

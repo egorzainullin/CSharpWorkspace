@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CalcTree
+namespace CalculationTree
 {
     class Program
     {
@@ -8,6 +8,9 @@ namespace CalcTree
         {
             var calcTree = new CalcTree("(* (+ 1 1) 2)");
             Console.WriteLine(calcTree.Calculate());
+            Console.WriteLine("===");
+            calcTree.Print();
+            Console.WriteLine("(* (+ 1 1) 2)");
         }
     }
 }
