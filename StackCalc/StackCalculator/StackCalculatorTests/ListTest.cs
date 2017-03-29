@@ -88,7 +88,7 @@ namespace ListTests
         [ExpectedException(typeof(EmptyStackException))]
         public void EmptyStackExceptionTest1()
         {
-            var list = new ArrayList();
+            var list = new List();
             list.Pop();
         }
 
@@ -96,7 +96,7 @@ namespace ListTests
         [ExpectedException(typeof(EmptyStackException))]
         public void EmptyStackExceptionTest2()
         {
-            var list = new ArrayList();
+            var list = new List();
             list.Peek();
         }
     }
