@@ -46,10 +46,18 @@ namespace Calculator
             {
                 currentAnswer = currentValue;
             }
-            CalculateCurrentAnswer();
-            currentValue = 0;
-            previousOperator = currentOperator;
-            UpdateScreen();
+            try
+            {
+                CalculateCurrentAnswer();
+                currentValue = 0;
+                previousOperator = currentOperator;
+                UpdateScreen();
+            }
+            catch (DivideByZeroException)
+            {
+                answerLabel.Text = "Дел ноль";
+                currentValue = 0;
+            }
         }
 
         private void CalculateCurrentAnswer()
@@ -90,7 +98,16 @@ namespace Calculator
             }
             else
             {
-                CalculateCurrentAnswer();
+                try
+                {
+                    CalculateCurrentAnswer();
+                }
+                catch (DivideByZeroException)
+                {
+                    answerLabel.Text = "Дел ноль";
+                    currentValue = 0;
+                    return;
+                }
             }
             previousOperator = "=";
             currentValue = 0;
