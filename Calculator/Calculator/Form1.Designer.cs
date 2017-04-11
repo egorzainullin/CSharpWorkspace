@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dotButton = new System.Windows.Forms.Button();
             this.label0 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.dotButton, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.label0, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label9, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label8, 1, 2);
@@ -88,6 +90,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 328);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // dotButton
+            // 
+            this.dotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dotButton.Location = new System.Drawing.Point(152, 199);
+            this.dotButton.Name = "dotButton";
+            this.dotButton.Size = new System.Drawing.Size(67, 58);
+            this.dotButton.TabIndex = 7;
+            this.dotButton.Text = ",";
+            this.dotButton.UseVisualStyleBackColor = true;
+            this.dotButton.Click += new System.EventHandler(this.OnDotButtonClick);
             // 
             // label0
             // 
@@ -279,7 +292,7 @@
             this.backspaceButton.Location = new System.Drawing.Point(4, 264);
             this.backspaceButton.Name = "backspaceButton";
             this.backspaceButton.Size = new System.Drawing.Size(215, 60);
-            this.backspaceButton.TabIndex = 7;
+            this.backspaceButton.TabIndex = 8;
             this.backspaceButton.Text = "backspace";
             this.backspaceButton.UseVisualStyleBackColor = true;
             this.backspaceButton.Click += new System.EventHandler(this.OnBackspaceButtonClick);
@@ -342,6 +355,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button dotButton;
     }
 }
 
