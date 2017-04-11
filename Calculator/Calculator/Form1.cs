@@ -75,7 +75,11 @@ namespace Calculator
         /// <param name="e"></param>
         private void OnOperatorButtonClick(object sender, EventArgs e)
         {
-            wasLastPressedGetAnswer = false;
+            if (wasLastPressedGetAnswer)
+            {
+                wasLastPressedGetAnswer = false;
+                previousOperator = "=";
+            }
             var button = sender as Button;
             string currentOperator = button.Text;
             try
@@ -124,7 +128,7 @@ namespace Calculator
                 case "*":
                     currentAnswer *= currentValue;
                     break;
-                case ":":
+                case "/":
                     currentAnswer /= currentValue;
                     break;
                 case "":
@@ -162,12 +166,15 @@ namespace Calculator
                 currentInput = "";
                 return;
             }
-            //previousOperator = "=";
-            //currentValue = 0;
-            //currentInput = "";
-            if (currentAnswer.ToString().Length <= 8)
+            string toPrint = currentAnswer.ToString();
+            int index = toPrint.IndexOf(',');
+            if (index > 0 && ((index + 2) < toPrint.Length))
             {
-                answerLabel.Text = currentAnswer.ToString();
+                toPrint = toPrint.Substring(0, index + 3);
+            }
+            if (toPrint.Length <= 8)
+            {
+                answerLabel.Text = toPrint;
             }
             else
             {
