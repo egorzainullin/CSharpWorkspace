@@ -1,31 +1,57 @@
-﻿//todo expception divide by zero
-//to do tooomany symbol handler
-
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Calculator
 {
+    /// <summary>
+    /// Форма, реализующая калькулятор
+    /// </summary>
     public partial class Calc : Form
     {
+        /// <summary>
+        /// Значение, введенное с клавиатуры
+        /// </summary>
         private double currentValue = 0;
+
+        /// <summary>
+        /// Ввод пользователя
+        /// </summary>
         private string currentInput = "";
+
+        /// <summary>
+        /// Ответ на данный момент
+        /// </summary>
         private double currentAnswer = 0;
+
+        /// <summary>
+        /// Предыдущий оператор
+        /// </summary>
         private string previousOperator = "";
 
+        /// <summary>
+        /// Было нажато равно
+        /// </summary>
+        private bool wasLastPressedGetAnswer = false;
+
+        /// <summary>
+        /// Инициализирует форму
+        /// </summary>
         public Calc()
         {
             InitializeComponent();
             KeyPreview = true;
         }
 
+        /// <summary>
+        /// Обработчик нажатия на какую-то из клавиш циферок
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnNumberLabelClick(object sender, EventArgs e)
         {
-            if (previousOperator == "=")
+            if (wasLastPressedGetAnswer)
             {
-                previousOperator = "";
-                currentValue = 0;
-                UpdateScreen();
+                Reset();
             }
             var label = sender as Label;
             int value = Int32.Parse(label.Text);
@@ -33,14 +59,23 @@ namespace Calculator
             UpdateScreen();
         }
 
+        /// <summary>
+        /// Выводит значения на экран
+        /// </summary>
         private void UpdateScreen()
         {
             operatorLabel.Text = previousOperator;
             answerLabel.Text = currentInput != "" ? currentInput : "0";
         }
 
+        /// <summary>
+        /// Обработчик нажатия на клавишу-оператор
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnOperatorButtonClick(object sender, EventArgs e)
         {
+            wasLastPressedGetAnswer = false;
             var button = sender as Button;
             string currentOperator = button.Text;
             try
@@ -65,6 +100,9 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Промежуточный подсчет ответа
+        /// </summary>
         private void CalculateCurrentAnswer()
         {
             if (currentInput == "")
@@ -89,9 +127,6 @@ namespace Calculator
                 case ":":
                     currentAnswer /= currentValue;
                     break;
-                case "=":
-                    currentValue = currentAnswer;
-                    break;
                 case "":
                     currentAnswer = currentValue;
                     break;
@@ -100,38 +135,36 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на равно
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnGetAnswerClick(object sender, EventArgs e)
         {
+            wasLastPressedGetAnswer = true;
             operatorLabel.Text = "=";
-            if (previousOperator == "=")
+            try
             {
-                answerLabel.Text = currentAnswer.ToString();
+                CalculateCurrentAnswer();
+            }
+            catch (DivideByZeroException)
+            {
+                answerLabel.Text = "Дел ноль";
+                currentValue = 0;
+                currentInput = "";
                 return;
             }
-            else
+            catch (SyntaxErrorException)
             {
-                try
-                {
-                    CalculateCurrentAnswer();
-                }
-                catch (DivideByZeroException)
-                {
-                    answerLabel.Text = "Дел ноль";
-                    currentValue = 0;
-                    currentInput = "";
-                    return;
-                }
-                catch (SyntaxErrorException)
-                {
-                    answerLabel.Text = "ошибка ввода";
-                    currentValue = 0;
-                    currentInput = "";
-                    return;
-                }
+                answerLabel.Text = "ошибка ввода";
+                currentValue = 0;
+                currentInput = "";
+                return;
             }
-            previousOperator = "=";
-            currentValue = 0;
-            currentInput = "";
+            //previousOperator = "=";
+            //currentValue = 0;
+            //currentInput = "";
             if (currentAnswer.ToString().Length <= 8)
             {
                 answerLabel.Text = currentAnswer.ToString();
@@ -142,17 +175,27 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на клавишу C, то есть очистка текущих значений и экрана
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnClearButtonClick(object sender, EventArgs e)
         {
-            previousOperator = "";
-            currentValue = 0;
-            currentAnswer = 0;
-            currentInput = "";
-            UpdateScreen();
+            Reset();
         }
 
+        /// <summary>
+        /// Нажатие на клавишу backspace
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnBackspaceButtonClick(object sender, EventArgs e)
         {
+            if (wasLastPressedGetAnswer)
+            {
+                Reset();
+            }
             if (currentInput.Length > 0)
             {
                 currentInput = currentInput.Substring(0, currentInput.Length - 1);
@@ -160,8 +203,16 @@ namespace Calculator
             UpdateScreen();
         }
 
+        /// <summary>
+        /// Запись ввода пользователя
+        /// </summary>
+        /// <param name="value">Последний символ, введенный пользователем</param>
         private void UpdateInput(string value)
         {
+            if (wasLastPressedGetAnswer)
+            {
+                Reset();
+            }
             if (currentInput.ToString().Length >= 8)
             {
                 return;
@@ -170,12 +221,34 @@ namespace Calculator
             UpdateScreen();
         }
 
+        /// <summary>
+        /// Восстановить начальные значения
+        /// </summary>
+        private void Reset()
+        {
+            wasLastPressedGetAnswer = false;
+            previousOperator = "";
+            currentValue = 0;
+            currentAnswer = 0;
+            currentInput = "";
+            UpdateScreen();
+        }
+
+        /// <summary>
+        /// Запись ввода пользователя
+        /// </summary>
+        /// <param name="value">последняя цифра, введенная пользователем</param>
         private void UpdateInput(int value)
         {
             string convertedValue = value.ToString();
             UpdateInput(convertedValue);
         }
 
+        /// <summary>
+        /// Обработчик нажатий клавиатуры
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCalcKeyUp(object sender, KeyEventArgs e)
         {
             var key = e.KeyCode;
@@ -249,6 +322,11 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на запятую
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnDotButtonClick(object sender, EventArgs e)
         {
             UpdateInput(",");
