@@ -57,7 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractNode.cs" />
+    <Compile Include="OperatorNode.cs" />
     <Compile Include="CalcTree.cs" />
+    <Compile Include="NumberNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
