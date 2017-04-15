@@ -6,7 +6,7 @@ namespace StackList
     {
         public static bool Test1()
         {
-            Stack stack = new Stack();
+            var stack = new Stack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
@@ -15,7 +15,7 @@ namespace StackList
             Console.WriteLine("====");
             Console.WriteLine(stack.Length);
             Console.WriteLine("====");
-            List list = new List();
+            var list = new List<int>();
             list.Add(4);
             list.Add(3);
             list.Add(4);

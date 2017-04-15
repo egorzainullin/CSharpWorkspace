@@ -8,78 +8,62 @@ namespace StackList
     /// <summary>
     /// Класс Список
     /// </summary>
-    public class List
+    public class List<T>
     {
         /// <summary>
-        /// класс элемент списка
+        /// Класс элемент списка
         /// </summary>
-        private class ListElement
+        private class ListElement<T>
         {
             /// <summary>
-            /// перекрытый метод ToString(), возвращающий значение элемента списка
+            /// Конструктор, создающий новый экземпляр класса <see cref="ListElement"/>
             /// </summary>
-            public override string ToString()
-            {
-                return "Value " + Value;
-            }
-
-            /// <summary>
-            /// конструктор, создающий новый экземпляр класса <see cref="ListElement"/>
-            /// </summary>
-            /// <param name="next"> следующий элемент </param>
-            /// <param name="value"> значение </param>
-            public ListElement(ListElement next, int value)
+            /// <param name="next"> Следующий элемент </param>
+            /// <param name="value"> Значение </param>
+            public ListElement(ListElement<T> next, T value)
             {
                 this.Next = next;
                 this.Value = value;
             }
 
             /// <summary>
-            /// следующий элемент списка
+            /// Следующий элемент списка
             /// </summary>
-            public ListElement Next { get; set; }
+            public ListElement<T> Next { get; private set; }
 
             /// <summary>
-            /// значение элемента списка
+            /// Значение элемента списка
             /// </summary>
-            public int Value { get; set; }
+            public T Value { get; set; }
 
             /// <summary>
-            /// удаляет следующий элемент за данным, если удаление невозможно, ничего не делает
+            /// Удаляет следующий элемент за данным, если удаление невозможно, ничего не делает
             /// </summary>
             public void RemoveByReference()
             {
-                if (this.Next != null)
+                if (Next != null)
                 {
-                    this.Next = this.Next.Next;
+                    Next = Next.Next;
                 }
             }
         }
 
         /// <summary>
-        /// свойство: длина списка
+        /// Длина списка
         /// </summary>
         public int Length { get; private set; }
 
         /// <summary>
         /// голова списка
         /// </summary>
-        private ListElement head;
+        private ListElement<T> head;
 
         /// <summary>
-        /// конструктор списка
-        /// </summary>
-        public List()
-        {
-
-        }
-
-        /// <summary>
-        /// печатает список, выводя каждое значение на своей строке
+        /// Печатает список, выводя каждое значение на своей строке
         /// </summary>
         public void Print()
         {
-            ListElement iterator = head;
+            ListElement<T> iterator = head;
             while (iterator != null)
             {
                 Console.WriteLine(iterator.Value);
@@ -91,15 +75,15 @@ namespace StackList
         /// Добавляет значение в список
         /// </summary>
         /// <param name="value">значение</param>
-        public void Add(int value)
+        public void Add(T value)
         {
-            ListElement newElement = new ListElement(head, value);
+            ListElement<T> newElement = new ListElement<T>(head, value);
             head = newElement;
             ++Length;
         }
 
         /// <summary>
-        /// удаляет элемент из головы списка
+        /// Удаляет элемент из головы списка
         /// </summary>
         public void DeleteFromHead()
         {
@@ -112,56 +96,50 @@ namespace StackList
         }
 
         /// <summary>
-        /// достает значение из головы, удаляет его из списка
+        /// Достает значение из головы, удаляет его из списка
         /// </summary>
         /// <returns></returns>
-        public int Pop()
+        public T Pop()
         {
             if (head == null)
             {
-                return 0;
+                throw new NullReferenceException("Список пуст");
             }
-            int value = head.Value;
+            T value = head.Value;
             head = head.Next;
             --Length;
             return value;
         }
 
         /// <summary>
-        /// очищает список
+        /// Очищает список
         /// </summary>
-        public void Clear()
-        {
-            while (head != null)
-            {
-                DeleteFromHead();
-            }
-        }
+        public void Clear() => head = null;
 
         /// <summary>
-        /// достает значение из головы
+        /// Достает значение из головы
         /// </summary>
         /// <returns></returns>
-        public int Peek()
+        public T Peek()
         {
             if (head == null)
             {
-                return 0;
+                throw new NullReferenceException("Список пуст");
             }
             return head.Value;
         }
 
         /// <summary>
-        /// проверят на принадлежность
+        /// Проверят на принадлежность
         /// </summary>
-        /// <param name="value">значение, которое надо проверить на принадлежность</param>
+        /// <param name="value">Значение, которое надо проверить на принадлежность</param>
         /// <returns></returns>
-        public bool IsContaining(int value)
+        public bool IsContaining(T value)
         {
-            ListElement iterator = head;
+            ListElement<T> iterator = head;
             while (iterator != null)
             {
-                if (iterator.Value == value)
+                if (iterator.Value.Equals(value))
                 {
                     return true;
                 }
@@ -171,27 +149,24 @@ namespace StackList
         }
 
         /// <summary>
-        /// проверяет на пустоту
+        /// Проверяет на пустоту
         /// </summary>
-        public bool isEmpty()
-        {
-            return head == null;
-        }
-
+        public bool IsEmpty() => head == null;
+        
         /// <summary>
-        /// удаляет все элементы из списка по значению
+        /// Удаляет все элементы из списка по значению
         /// </summary>
         /// <param name="value"></param>
         public void Remove(int value)
         {
-            while (head != null && head.Value == value)
+            while (head != null && head.Value.Equals(value))
             {
                 DeleteFromHead();
             }
-            ListElement iterator = head;
+            ListElement<T> iterator = head;
             while (iterator != null)
             {
-                while (iterator != null && iterator.Next != null && iterator.Next.Value == value)
+                while (iterator != null && iterator.Next != null && iterator.Next.Value.Equals(value))
                 {
                     iterator.RemoveByReference();
                     --Length;

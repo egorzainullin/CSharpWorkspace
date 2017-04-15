@@ -2,79 +2,113 @@
 
 namespace StackList
 {
-    public class Stack
+    /// <summary>
+    /// Класс Стек
+    /// </summary>
+    public class Stack<T>
     {
+        /// <summary>
+        /// Длина списка
+        /// </summary>
         public int Length { get; private set; }
 
-        private class StackElement
+        /// <summary>
+        /// Элемент стека
+        /// </summary>
+        private class StackElement<T>
         {
-            public StackElement next;
+            /// <summary>
+            /// Следующий элемент
+            /// </summary>
+            public StackElement<T> Next => next;
 
-            public int value;
+            /// <summary>
+            /// Следующий элемент
+            /// </summary>
+            private StackElement<T> next;
 
-            public StackElement(StackElement next, int value)
+            /// <summary>
+            /// Значение
+            /// </summary>
+            public T Value => value;
+
+            /// <summary>
+            /// Значение
+            /// </summary>
+            private T value;
+
+            public StackElement(StackElement<T> next, T value)
             {
                 this.next = next;
                 this.value = value;
             }
         }
 
-        private StackElement head;
+        /// <summary>
+        /// Голова стека
+        /// </summary>
+        private StackElement<T> head;
 
-        public Stack()
+        /// <summary>
+        /// Добавить значение в стек
+        /// </summary>
+        /// <param name="value">Значение</param>
+        public void Push(T value)
         {
-            head = null;
-            Length = 0;
-        }
-
-        public void Push(int value)
-        {
-            StackElement newElement = new StackElement(head, value);
+            StackElement<T> newElement = new StackElement<T>(head, value);
             head = newElement;
             ++Length;
         }
 
-        public int Pop()
+        /// <summary>
+        /// Достает значение из головы, удаляет его из стека
+        /// </summary>
+        public T Pop()
         {
             if (head == null)
             {
-                return 0;
+                throw new NullReferenceException();
             }
-            int value = head.value;
-            head = head.next;
+            T value = head.Value;
+            head = head.Next;
             --Length;
             return value;
         }
 
-        public int Peek()
+        /// <summary>
+        /// Достает значение из головы
+        /// </summary>
+        /// <returns></returns>
+        public T Peek()
         {
             if (head == null)
             {
-                return 0;
+                throw new NullReferenceException();
             }
-            return head.value;
+            return head.Value;
         }
 
-        public bool isEmpty()
-        {
-            return head == null;
-        }
+        /// <summary>
+        /// Проверка на пустоту
+        /// </summary>
+        /// <returns>true, если пуст, false, если нет</returns>
+        public bool IsEmpty() => head == null;
 
-        public void Clear()
-        {
-            while (head != null)
-            {
-                Pop();
-            }
-        }
+        /// <summary>
+        /// Очищает стек
+        /// </summary>
+        public void Clear() => head = null;
 
+        /// <summary>
+        /// Печатает стек
+        /// </summary>
         public void Print()
         {
-            StackElement iterator = head;
+            StackElement<T> iterator = head;
             while (iterator != null)
             {
-                Console.WriteLine(iterator.value);
-                iterator = iterator.next;
+                Console.WriteLine(iterator.Value);
+                iterator = iterator.Next;
             }
         }
     }
