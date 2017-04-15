@@ -67,7 +67,7 @@ namespace StackList
         {
             if (head == null)
             {
-                throw new NullReferenceException();
+                throw new NullReferenceException("Стек пуст");
             }
             T value = head.Value;
             head = head.Next;
@@ -83,7 +83,7 @@ namespace StackList
         {
             if (head == null)
             {
-                throw new NullReferenceException();
+                throw new NullReferenceException("Стек пуст");
             }
             return head.Value;
         }
