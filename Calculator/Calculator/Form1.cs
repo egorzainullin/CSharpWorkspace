@@ -84,7 +84,8 @@ namespace Calculator
             string currentOperator = button.Text;
             try
             {
-                CalculateCurrentAnswer();
+                var updatedValues = CalcFunctions.CalculateCurrentAnswer(currentAnswer, currentInput, previousOperator);
+                currentAnswer = updatedValues.Item2;
                 currentValue = 0;
                 currentInput = "";
                 previousOperator = currentOperator;
@@ -105,41 +106,6 @@ namespace Calculator
         }
 
         /// <summary>
-        /// Промежуточный подсчет ответа
-        /// </summary>
-        private void CalculateCurrentAnswer()
-        {
-            if (currentInput == "")
-            {
-                currentValue = 0;
-            }
-            else if (!Double.TryParse(currentInput, out currentValue))
-            {
-                throw new SyntaxErrorException();
-            }
-            switch (previousOperator)
-            {
-                case "+":
-                    currentAnswer += currentValue;
-                    break;
-                case "-":
-                    currentAnswer -= currentValue;
-                    break;
-                case "*":
-                    currentAnswer *= currentValue;
-                    break;
-                case "/":
-                    currentAnswer /= currentValue;
-                    break;
-                case "":
-                    currentAnswer = currentValue;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        /// <summary>
         /// Обработчик события нажатия на равно
         /// </summary>
         /// <param name="sender"></param>
@@ -150,7 +116,9 @@ namespace Calculator
             operatorLabel.Text = "=";
             try
             {
-                CalculateCurrentAnswer();
+                var updatedValues = CalcFunctions.CalculateCurrentAnswer(currentAnswer, currentInput, previousOperator);
+                currentValue = updatedValues.Item1;
+                currentAnswer = updatedValues.Item2;
             }
             catch (DivideByZeroException)
             {
