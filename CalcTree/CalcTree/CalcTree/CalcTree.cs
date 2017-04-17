@@ -23,7 +23,7 @@ namespace CalculationTree
         /// </summary>
         public string Print()
         {
-            string outString = root.PrintTree();
+            string outString = root.TreeIntoString();
             Console.WriteLine(outString);
             return outString;
         }
