@@ -5,7 +5,7 @@ namespace Calculator
     /// <summary>
     /// Класс, реализующий бизнес-логику калькулятора
     /// </summary>
-    internal class CalcFunctions
+    public class CalcFunctions
     {
         /// <summary>
         /// Посчитать значение 
