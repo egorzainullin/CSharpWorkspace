@@ -8,43 +8,70 @@ using System.Threading.Tasks;
 
 namespace StackList.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class StackTests
     {
-        [TestMethod()]
+        private Stack<int> stack;
+
+        [TestInitialize]
+        public void InitializeTest()
+        {
+            stack = new Stack<int>();
+        }
+
+        [TestMethod]
         public void PushTest()
         {
-            Assert.Fail();
+            stack.Push(2);
+            Assert.AreEqual(2, stack.Peek());
+            stack.Push(2);
+            Assert.AreEqual(2, stack.Length);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void PopTest()
         {
-            Assert.Fail();
+            stack.Push(3);
+            Assert.AreEqual(3, stack.Pop());
         }
 
-        [TestMethod()]
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void PopErrorTest()
+        {
+            stack.Pop();
+        }
+
+        [TestMethod]
         public void PeekTest()
         {
-            Assert.Fail();
+            stack.Push(3);
+            Assert.AreEqual(3, stack.Peek());
+            Assert.AreEqual(1, stack.Length);
         }
 
-        [TestMethod()]
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void PeekErrorTest()
+        {
+            stack.Peek();
+        }
+
+        [TestMethod]
         public void IsEmptyTest()
         {
-            Assert.Fail();
+            Assert.IsTrue(stack.IsEmpty());
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ClearTest()
         {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void PrintTest()
-        {
-            Assert.Fail();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+            stack.Clear();
+            Assert.IsTrue(stack.IsEmpty());
+            Assert.AreEqual(0, stack.Length);
         }
     }
 }

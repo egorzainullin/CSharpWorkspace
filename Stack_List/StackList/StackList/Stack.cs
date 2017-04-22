@@ -8,36 +8,36 @@ namespace StackList
     public class Stack<T>
     {
         /// <summary>
-        /// Длина списка
+        /// Длина стека
         /// </summary>
         public int Length { get; private set; }
 
         /// <summary>
         /// Элемент стека
         /// </summary>
-        private class StackElement<T>
+        private class StackElement<T1>
         {
             /// <summary>
             /// Следующий элемент
             /// </summary>
-            public StackElement<T> Next => next;
+            public StackElement<T1> Next => next;
 
             /// <summary>
             /// Следующий элемент
             /// </summary>
-            private StackElement<T> next;
+            private StackElement<T1> next;
 
             /// <summary>
             /// Значение
             /// </summary>
-            public T Value => value;
+            public T1 Value => value;
 
             /// <summary>
             /// Значение
             /// </summary>
-            private T value;
+            private T1 value;
 
-            public StackElement(StackElement<T> next, T value)
+            public StackElement(StackElement<T1> next, T1 value)
             {
                 this.next = next;
                 this.value = value;
@@ -63,6 +63,7 @@ namespace StackList
         /// <summary>
         /// Достает значение из головы, удаляет его из стека
         /// </summary>
+        /// <exception cref="NullReferenceException" />
         public T Pop()
         {
             if (head == null)
@@ -79,6 +80,7 @@ namespace StackList
         /// Достает значение из головы
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="NullReferenceException" />
         public T Peek()
         {
             if (head == null)
@@ -97,19 +99,10 @@ namespace StackList
         /// <summary>
         /// Очищает стек
         /// </summary>
-        public void Clear() => head = null;
-
-        /// <summary>
-        /// Печатает стек
-        /// </summary>
-        public void Print()
+        public void Clear()
         {
-            StackElement<T> iterator = head;
-            while (iterator != null)
-            {
-                Console.WriteLine(iterator.Value);
-                iterator = iterator.Next;
-            }
+            head = null;
+            Length = 0;
         }
     }
 }

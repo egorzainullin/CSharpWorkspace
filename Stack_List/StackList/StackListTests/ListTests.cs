@@ -8,61 +8,110 @@ using System.Threading.Tasks;
 
 namespace StackList.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class ListTests
     {
-        [TestMethod()]
-        public void PrintTest()
+        private List<int> list;
+
+        [TestInitialize]
+        public void InitializeTest()
         {
-            Assert.Fail();
+            list = new List<int>();
         }
 
-        [TestMethod()]
-        public void AddTest()
+        [TestMethod]
+        public void PushTest()
         {
-            Assert.Fail();
+            list.Add(2);
+            Assert.AreEqual(2, list.Peek());
+            list.Add(2);
+            Assert.AreEqual(2, list.Length);
         }
 
-        [TestMethod()]
-        public void DeleteFromHeadTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
+        [TestMethod]
         public void PopTest()
         {
-            Assert.Fail();
+            list.Add(3);
+            Assert.AreEqual(3, list.Pop());
         }
 
-        [TestMethod()]
-        public void ClearTest()
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void PopErrorTest()
         {
-            Assert.Fail();
+            list.Pop();
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void PeekTest()
         {
-            Assert.Fail();
+            list.Add(3);
+            Assert.AreEqual(3, list.Peek());
+            Assert.AreEqual(1, list.Length);
         }
 
-        [TestMethod()]
-        public void IsContainingTest()
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void PeekErrorTest()
         {
-            Assert.Fail();
+            list.Peek();
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void IsEmptyTest()
         {
-            Assert.Fail();
+            Assert.IsTrue(list.IsEmpty());
         }
 
-        [TestMethod()]
+        [TestMethod]
+        public void ClearTest()
+        {
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Clear();
+            Assert.IsTrue(list.IsEmpty());
+            Assert.AreEqual(0, list.Length);
+        }
+
+        [TestMethod]
+        public void DeleteFromHeadTest()
+        {
+            list.Add(1);
+            list.Add(2);
+            list.DeleteFromHead();
+            Assert.AreEqual(1, list.Length);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void DeleteFromHeadExceptionTest()
+        {
+            list.DeleteFromHead();
+        }
+
+        [TestMethod]
+        public void IsContainingTest()
+        {
+            list.Add(1);
+            list.Add(2);
+            Assert.IsTrue(list.IsContaining(1));
+            Assert.IsFalse(list.IsContaining(3));
+        }
+
+        [TestMethod]
         public void RemoveTest()
         {
-            Assert.Fail();
+            list.Add(1);
+            list.Remove(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(3);
+            list.Remove(2);
+            Assert.IsFalse(list.IsContaining(2));
+            list.Remove(3);
+            Assert.IsFalse(list.IsContaining(3));
+            Assert.AreEqual(0, list.Length);
         }
     }
 }

@@ -4,23 +4,24 @@
 namespace StackList
 {
     using System;
+    using System.Collections;
 
     /// <summary>
     /// Класс Список
     /// </summary>
-    public class List<T>
+    public class List<T> : IEnumerable
     {
         /// <summary>
         /// Класс элемент списка
         /// </summary>
-        private class ListElement<T>
+        private class ListElement<T1>
         {
             /// <summary>
             /// Конструктор, создающий новый экземпляр класса <see cref="ListElement"/>
             /// </summary>
             /// <param name="next"> Следующий элемент </param>
             /// <param name="value"> Значение </param>
-            public ListElement(ListElement<T> next, T value)
+            public ListElement(ListElement<T1> next, T1 value)
             {
                 this.Next = next;
                 this.Value = value;
@@ -29,12 +30,12 @@ namespace StackList
             /// <summary>
             /// Следующий элемент списка
             /// </summary>
-            public ListElement<T> Next { get; private set; }
+            public ListElement<T1> Next { get; private set; }
 
             /// <summary>
             /// Значение элемента списка
             /// </summary>
-            public T Value { get; set; }
+            public T1 Value { get; set; }
 
             /// <summary>
             /// Удаляет следующий элемент за данным, если удаление невозможно, ничего не делает
@@ -59,19 +60,6 @@ namespace StackList
         private ListElement<T> head;
 
         /// <summary>
-        /// Печатает список, выводя каждое значение на своей строке
-        /// </summary>
-        public void Print()
-        {
-            ListElement<T> iterator = head;
-            while (iterator != null)
-            {
-                Console.WriteLine(iterator.Value);
-                iterator = iterator.Next;
-            }
-        }
-
-        /// <summary>
         /// Добавляет значение в список
         /// </summary>
         /// <param name="value">значение</param>
@@ -85,11 +73,12 @@ namespace StackList
         /// <summary>
         /// Удаляет элемент из головы списка
         /// </summary>
+        /// <exception cref="NullReferenceException" />
         public void DeleteFromHead()
         {
             if (head == null)
             {
-                return;
+                throw new NullReferenceException("Список пуст");
             }
             head = head.Next;
             --Length;
@@ -99,6 +88,7 @@ namespace StackList
         /// Достает значение из головы, удаляет его из списка
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="NullReferenceException" />
         public T Pop()
         {
             if (head == null)
@@ -114,12 +104,17 @@ namespace StackList
         /// <summary>
         /// Очищает список
         /// </summary>
-        public void Clear() => head = null;
+        public void Clear()
+        {
+            head = null;
+            Length = 0;
+        }
 
         /// <summary>
         /// Достает значение из головы
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="NullReferenceException" />
         public T Peek()
         {
             if (head == null)
@@ -172,6 +167,86 @@ namespace StackList
                     --Length;
                 }
                 iterator = iterator.Next;
+            }
+        }
+
+        /// <summary>
+        /// Получить энумератор
+        /// </summary>
+        /// <returns>Возвращает энумератор</returns>
+        public IEnumerator GetEnumerator()
+        {
+            return new ListEnumerator<T>(this);
+        }
+
+        /// <summary>
+        /// Класс, реализующий IEnumerator для списка
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        private class ListEnumerator<T1> : IEnumerator
+        {
+            /// <summary>
+            /// Энумератор
+            /// </summary>
+            private ListElement<T> enumerator;
+
+            /// <summary>
+            /// Первый элемент
+            /// </summary>
+            private ListElement<T> head;
+
+            /// <summary>
+            /// Инициализирует новый экземпляр класса <see cref="ListEnumerator{T1}"/>
+            /// </summary>
+            /// <param name="list"></param>
+            public ListEnumerator(List<T> list)
+            {
+                head = list.head;
+            }
+
+            /// <summary>
+            /// Пройдена ли коллекция
+            /// </summary>
+            private bool isPassed = false;
+
+            /// <summary>
+            /// Переключает указатель на следующий элемент коллекции
+            /// Возвращает true в случае успешной операции
+            /// </summary>
+            /// <returns>Возвращает true в случае успешной операции, false, если вся коллекция уже пройдена</returns>
+            /// <exception cref="InvalidOperationException" />
+            public bool MoveNext()
+            {
+                if (isPassed)
+                {
+                    throw new InvalidOperationException("Коллекция уже закончилась");
+                }
+                if (enumerator == null)
+                {
+                    enumerator = head;
+                    return true;
+                }
+                enumerator = enumerator.Next;
+                if (enumerator == null)
+                {
+                    isPassed = true;
+                    return false;
+                }
+                return true;
+            }
+
+            /// <summary>
+            /// Возвращает значение энумератора в данный момент
+            /// </summary>
+            public Object Current => enumerator.Value;
+
+            /// <summary>
+            /// Ставит энумератор в начальную позицию перед первым элементом
+            /// </summary>
+            public void Reset()
+            {
+                isPassed = false;
+                enumerator = null;
             }
         }
     }
