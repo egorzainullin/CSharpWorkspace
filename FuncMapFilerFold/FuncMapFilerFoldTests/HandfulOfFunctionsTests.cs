@@ -33,7 +33,7 @@ namespace FuncMapFilerFold.Tests
         [TestMethod()]
         public void FoldTest()
         {
-            int res = HandfulOfFunctions.Fold(list, 1, (acc, elem) => acc* elem);
+            int res = HandfulOfFunctions.Fold(list, 1, (acc, elem) => acc * elem);
             Assert.AreEqual(6, res);
         }
     }

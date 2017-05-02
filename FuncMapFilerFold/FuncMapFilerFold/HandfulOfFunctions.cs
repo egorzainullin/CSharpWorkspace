@@ -36,7 +36,14 @@ namespace FuncMapFilerFold
         public static List<int> Filter(List<int> list, Func<int, bool> function)
         {
             var returningList = new List<int>();
-            return list.FindAll(i => function(i));
+            foreach (var i in list)
+            {
+                if (function(i))
+                {
+                    returningList.Add(i);
+                }
+            }
+            return returningList;
         }
 
         /// <summary>
