@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Events
 {
@@ -15,14 +11,17 @@ namespace Events
         /// Событие, возникающее при нажатии стрелочки налево
         /// </summary>
         public event EventHandler<EventArgs> LeftHandler = (sender, args) => { };
+
         /// <summary>
         /// Событие, возникающее при нажатии стрелочки вправо
         /// </summary>
         public event EventHandler<EventArgs> RightHandler = (sender, args) => { };
+
         /// <summary>
         /// Событие, возникающее при нажатии стрелочки вверх
         /// </summary>
         public event EventHandler<EventArgs> UpHandler = (sender, args) => { };
+
         /// <summary>
         /// Событие, возникающее при нажатии стрелочки вниз
         /// </summary>

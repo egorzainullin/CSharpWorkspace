@@ -50,7 +50,10 @@ namespace Events
         /// <param name="e"></param>
         internal static void OnRight(object sender, EventArgs e)
         {
-            ++Console.CursorLeft;
+            if (System.Console.BufferWidth - 1 > Console.CursorLeft)
+            {
+                ++Console.CursorLeft;
+            }
         }
     }
 }
