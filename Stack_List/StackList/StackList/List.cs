@@ -5,11 +5,12 @@ namespace StackList
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Класс Список
     /// </summary>
-    public class List<T> : IEnumerable
+    public class List<T> : IEnumerable<T>
     {
         /// <summary>
         /// Класс элемент списка
@@ -174,7 +175,16 @@ namespace StackList
         /// Получить энумератор
         /// </summary>
         /// <returns>Возвращает энумератор</returns>
-        public IEnumerator GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new ListEnumerator<T>(this);
+        }
+
+        /// <summary>
+        /// Получить генериковый энумератор
+        /// </summary>
+        /// <returns>Возвращает энумератор</returns>
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return new ListEnumerator<T>(this);
         }
@@ -183,7 +193,7 @@ namespace StackList
         /// Класс, реализующий IEnumerator для списка
         /// </summary>
         /// <typeparam name="T1"></typeparam>
-        private class ListEnumerator<T1> : IEnumerator
+        private class ListEnumerator<T1> : IEnumerator<T>
         {
             /// <summary>
             /// Энумератор
@@ -238,7 +248,12 @@ namespace StackList
             /// <summary>
             /// Возвращает значение энумератора в данный момент
             /// </summary>
-            public Object Current => enumerator.Value;
+            public T Current => enumerator.Value;
+
+            /// <summary>
+            /// Возвращает элемент коллекции
+            /// </summary>
+            Object IEnumerator.Current => enumerator.Value;
 
             /// <summary>
             /// Ставит энумератор в начальную позицию перед первым элементом
@@ -247,6 +262,16 @@ namespace StackList
             {
                 isPassed = false;
                 enumerator = null;
+            }
+
+            /// <summary>
+            /// Метод Dispose, удаляющий ссылки  на энумератор и голову
+            /// </summary>
+            public void Dispose()
+            {
+                enumerator = null;
+                head = null;
+                isPassed = false;
             }
         }
     }

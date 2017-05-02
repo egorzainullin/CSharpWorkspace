@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StackList;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StackList.Tests
 {
@@ -112,6 +107,20 @@ namespace StackList.Tests
             list.Remove(3);
             Assert.IsFalse(list.IsContaining(3));
             Assert.AreEqual(0, list.Length);
+        }
+
+        [TestMethod]
+        public void Enumeratortest()
+        {
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            int j = 0;
+            foreach(var i in list)
+            {
+                ++j;   
+            }
+            Assert.AreEqual(3, j);
         }
     }
 }
