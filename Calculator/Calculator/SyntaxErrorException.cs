@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Calculator
 {
+    /// <summary>
+    /// Исключение, которое возникает при синтаксической ошибке ввода числа
+    /// </summary>
     [Serializable]
     public class SyntaxErrorException : Exception
     {

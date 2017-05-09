@@ -45,8 +45,8 @@ namespace Calculator
         /// <summary>
         /// Обработчик нажатия на какую-то из клавиш циферок
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Объект-отправитель</param>
+        /// <param name="e">Аргументы события</param>
         private void OnNumberLabelClick(object sender, EventArgs e)
         {
             if (wasLastPressedGetAnswer)
@@ -71,8 +71,8 @@ namespace Calculator
         /// <summary>
         /// Обработчик нажатия на клавишу-оператор
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Объект-отправитель</param>
+        /// <param name="e">Аргументы события</param>
         private void OnOperatorButtonClick(object sender, EventArgs e)
         {
             if (wasLastPressedGetAnswer)
@@ -108,8 +108,8 @@ namespace Calculator
         /// <summary>
         /// Обработчик события нажатия на равно
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Объект-отправитель</param>
+        /// <param name="e">Аргументы события</param>
         private void OnGetAnswerClick(object sender, EventArgs e)
         {
             wasLastPressedGetAnswer = true;
@@ -153,8 +153,8 @@ namespace Calculator
         /// <summary>
         /// Обработчик события нажатия на клавишу C, то есть очистка текущих значений и экрана
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Объект-отправитель</param>
+        /// <param name="e">Аргументы события</param>
         private void OnClearButtonClick(object sender, EventArgs e)
         {
             Reset();
@@ -212,7 +212,7 @@ namespace Calculator
         /// <summary>
         /// Запись ввода пользователя
         /// </summary>
-        /// <param name="value">последняя цифра, введенная пользователем</param>
+        /// <param name="value">Последняя цифра, введенная пользователем</param>
         private void UpdateInput(int value)
         {
             string convertedValue = value.ToString();
@@ -222,8 +222,8 @@ namespace Calculator
         /// <summary>
         /// Обработчик нажатий клавиатуры
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Объект-отправитель</param>
+        /// <param name="e">Аргументы события</param>
         private void OnCalcKeyUp(object sender, KeyEventArgs e)
         {
             var key = e.KeyCode;
@@ -300,8 +300,8 @@ namespace Calculator
         /// <summary>
         /// Обработчик нажатия на запятую
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Объект-отправитель</param>
+        /// <param name="e">Аргументы события</param>
         private void OnDotButtonClick(object sender, EventArgs e)
         {
             UpdateInput(",");

@@ -326,6 +326,7 @@
             this.Controls.Add(this.operatorLabel);
             this.Controls.Add(this.answerLabel);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(332, 541);
             this.Name = "Calc";
             this.Text = "Calculator";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnCalcKeyUp);
