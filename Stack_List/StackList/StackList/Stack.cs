@@ -63,7 +63,7 @@ namespace StackList
         /// <summary>
         /// Достает значение из головы, удаляет его из стека
         /// </summary>
-        /// <exception cref="NullReferenceException" />
+        /// <exception cref="NullReferenceException">Попытка достать значение из пустого стека</exception>
         public T Pop()
         {
             if (head == null)
@@ -80,7 +80,7 @@ namespace StackList
         /// Достает значение из головы
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="NullReferenceException" />
+        /// <exception cref="NullReferenceException">Попытка достать значение из пустого стека</exception>
         public T Peek()
         {
             if (head == null)

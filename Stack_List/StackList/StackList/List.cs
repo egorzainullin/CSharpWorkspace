@@ -15,14 +15,14 @@ namespace StackList
         /// <summary>
         /// Класс элемент списка
         /// </summary>
-        private class ListElement<T1>
+        private class ListElement
         {
             /// <summary>
             /// Конструктор, создающий новый экземпляр класса <see cref="ListElement"/>
             /// </summary>
             /// <param name="next"> Следующий элемент </param>
             /// <param name="value"> Значение </param>
-            public ListElement(ListElement<T1> next, T1 value)
+            public ListElement(ListElement next, T value)
             {
                 this.Next = next;
                 this.Value = value;
@@ -31,12 +31,12 @@ namespace StackList
             /// <summary>
             /// Следующий элемент списка
             /// </summary>
-            public ListElement<T1> Next { get; private set; }
+            public ListElement Next { get; private set; }
 
             /// <summary>
             /// Значение элемента списка
             /// </summary>
-            public T1 Value { get; set; }
+            public T Value { get; set; }
 
             /// <summary>
             /// Удаляет следующий элемент за данным, если удаление невозможно, ничего не делает
@@ -58,7 +58,7 @@ namespace StackList
         /// <summary>
         /// голова списка
         /// </summary>
-        private ListElement<T> head;
+        private ListElement head;
 
         /// <summary>
         /// Добавляет значение в список
@@ -66,7 +66,7 @@ namespace StackList
         /// <param name="value">значение</param>
         public void Add(T value)
         {
-            ListElement<T> newElement = new ListElement<T>(head, value);
+            var newElement = new ListElement(head, value);
             head = newElement;
             ++Length;
         }
@@ -74,7 +74,7 @@ namespace StackList
         /// <summary>
         /// Удаляет элемент из головы списка
         /// </summary>
-        /// <exception cref="NullReferenceException" />
+        /// <exception cref="NullReferenceException">Список пуст</exception>
         public void DeleteFromHead()
         {
             if (head == null)
@@ -89,7 +89,7 @@ namespace StackList
         /// Достает значение из головы, удаляет его из списка
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="NullReferenceException" />
+        /// <exception cref="NullReferenceException">Попытка достать значение из пустого списка</exception>
         public T Pop()
         {
             if (head == null)
@@ -115,7 +115,7 @@ namespace StackList
         /// Достает значение из головы
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="NullReferenceException" />
+        /// <exception cref="NullReferenceException">Попытка достать значение из пустого списка</exception>
         public T Peek()
         {
             if (head == null)
@@ -132,7 +132,7 @@ namespace StackList
         /// <returns></returns>
         public bool IsContaining(T value)
         {
-            ListElement<T> iterator = head;
+            ListElement iterator = head;
             while (iterator != null)
             {
                 if (iterator.Value.Equals(value))
@@ -159,7 +159,7 @@ namespace StackList
             {
                 DeleteFromHead();
             }
-            ListElement<T> iterator = head;
+            ListElement iterator = head;
             while (iterator != null)
             {
                 while (iterator != null && iterator.Next != null && iterator.Next.Value.Equals(value))
@@ -172,7 +172,7 @@ namespace StackList
         }
 
         /// <summary>
-        /// Получить энумератор
+        /// Получить генериковый энумератор
         /// </summary>
         /// <returns>Возвращает энумератор</returns>
         public IEnumerator<T> GetEnumerator()
@@ -181,7 +181,7 @@ namespace StackList
         }
 
         /// <summary>
-        /// Получить генериковый энумератор
+        /// Получить энумератор
         /// </summary>
         /// <returns>Возвращает энумератор</returns>
         IEnumerator IEnumerable.GetEnumerator()
@@ -198,12 +198,12 @@ namespace StackList
             /// <summary>
             /// Энумератор
             /// </summary>
-            private ListElement<T> enumerator;
+            private ListElement enumerator;
 
             /// <summary>
             /// Первый элемент
             /// </summary>
-            private ListElement<T> head;
+            private ListElement head;
 
             /// <summary>
             /// Инициализирует новый экземпляр класса <see cref="ListEnumerator{T1}"/>
