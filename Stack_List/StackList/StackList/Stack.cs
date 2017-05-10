@@ -15,29 +15,29 @@ namespace StackList
         /// <summary>
         /// Элемент стека
         /// </summary>
-        private class StackElement<T1>
+        private class StackElement
         {
             /// <summary>
             /// Следующий элемент
             /// </summary>
-            public StackElement<T1> Next => next;
+            public StackElement Next => next;
 
             /// <summary>
             /// Следующий элемент
             /// </summary>
-            private StackElement<T1> next;
+            private StackElement next;
 
             /// <summary>
             /// Значение
             /// </summary>
-            public T1 Value => value;
+            public T Value => value;
 
             /// <summary>
             /// Значение
             /// </summary>
-            private T1 value;
+            private T value;
 
-            public StackElement(StackElement<T1> next, T1 value)
+            public StackElement(StackElement next, T value)
             {
                 this.next = next;
                 this.value = value;
@@ -47,7 +47,7 @@ namespace StackList
         /// <summary>
         /// Голова стека
         /// </summary>
-        private StackElement<T> head;
+        private StackElement head;
 
         /// <summary>
         /// Добавить значение в стек
@@ -55,7 +55,7 @@ namespace StackList
         /// <param name="value">Значение</param>
         public void Push(T value)
         {
-            StackElement<T> newElement = new StackElement<T>(head, value);
+            StackElement newElement = new StackElement(head, value);
             head = newElement;
             ++Length;
         }
