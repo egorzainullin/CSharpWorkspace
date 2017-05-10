@@ -78,7 +78,8 @@
             this.tableLayoutPanel1.Controls.Add(this.multiplyButton, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.clearButton, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.backspaceButton, 0, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 154);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 166);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -88,15 +89,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 328);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(314, 328);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // dotButton
             // 
+            this.dotButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dotButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dotButton.Location = new System.Drawing.Point(152, 199);
+            this.dotButton.Location = new System.Drawing.Point(160, 199);
             this.dotButton.Name = "dotButton";
-            this.dotButton.Size = new System.Drawing.Size(67, 58);
+            this.dotButton.Size = new System.Drawing.Size(71, 58);
             this.dotButton.TabIndex = 7;
             this.dotButton.Text = ",";
             this.dotButton.UseVisualStyleBackColor = true;
@@ -106,9 +108,9 @@
             // 
             this.label0.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label0.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label0.Location = new System.Drawing.Point(78, 196);
+            this.label0.Location = new System.Drawing.Point(82, 196);
             this.label0.Name = "label0";
-            this.label0.Size = new System.Drawing.Size(67, 64);
+            this.label0.Size = new System.Drawing.Size(71, 64);
             this.label0.TabIndex = 26;
             this.label0.Text = "0";
             this.label0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -118,9 +120,9 @@
             // 
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(152, 131);
+            this.label9.Location = new System.Drawing.Point(160, 131);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 64);
+            this.label9.Size = new System.Drawing.Size(71, 64);
             this.label9.TabIndex = 25;
             this.label9.Text = "9";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -130,9 +132,9 @@
             // 
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(78, 131);
+            this.label8.Location = new System.Drawing.Point(82, 131);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 64);
+            this.label8.Size = new System.Drawing.Size(71, 64);
             this.label8.TabIndex = 24;
             this.label8.Text = "8";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -144,7 +146,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(4, 131);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 64);
+            this.label7.Size = new System.Drawing.Size(71, 64);
             this.label7.TabIndex = 23;
             this.label7.Text = "7";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -154,9 +156,9 @@
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(152, 66);
+            this.label6.Location = new System.Drawing.Point(160, 66);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 64);
+            this.label6.Size = new System.Drawing.Size(71, 64);
             this.label6.TabIndex = 22;
             this.label6.Text = "6";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -166,9 +168,9 @@
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(78, 66);
+            this.label5.Location = new System.Drawing.Point(82, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 64);
+            this.label5.Size = new System.Drawing.Size(71, 64);
             this.label5.TabIndex = 21;
             this.label5.Text = "5";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -180,7 +182,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(4, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 64);
+            this.label4.Size = new System.Drawing.Size(71, 64);
             this.label4.TabIndex = 20;
             this.label4.Text = "4";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -190,9 +192,9 @@
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(152, 1);
+            this.label3.Location = new System.Drawing.Point(160, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 64);
+            this.label3.Size = new System.Drawing.Size(71, 64);
             this.label3.TabIndex = 19;
             this.label3.Text = "3";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -202,9 +204,9 @@
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(78, 1);
+            this.label2.Location = new System.Drawing.Point(82, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 64);
+            this.label2.Size = new System.Drawing.Size(71, 64);
             this.label2.TabIndex = 18;
             this.label2.Text = "2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -216,7 +218,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(4, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 64);
+            this.label1.Size = new System.Drawing.Size(71, 64);
             this.label1.TabIndex = 4;
             this.label1.Text = "1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,9 +226,10 @@
             // 
             // plusButton
             // 
-            this.plusButton.Location = new System.Drawing.Point(226, 134);
+            this.plusButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.plusButton.Location = new System.Drawing.Point(238, 134);
             this.plusButton.Name = "plusButton";
-            this.plusButton.Size = new System.Drawing.Size(70, 58);
+            this.plusButton.Size = new System.Drawing.Size(72, 58);
             this.plusButton.TabIndex = 3;
             this.plusButton.Text = "+";
             this.plusButton.UseVisualStyleBackColor = true;
@@ -234,9 +237,10 @@
             // 
             // minusButton
             // 
-            this.minusButton.Location = new System.Drawing.Point(226, 199);
+            this.minusButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.minusButton.Location = new System.Drawing.Point(238, 199);
             this.minusButton.Name = "minusButton";
-            this.minusButton.Size = new System.Drawing.Size(70, 58);
+            this.minusButton.Size = new System.Drawing.Size(72, 58);
             this.minusButton.TabIndex = 4;
             this.minusButton.Text = "-";
             this.minusButton.UseVisualStyleBackColor = true;
@@ -244,9 +248,10 @@
             // 
             // getAnswerButton
             // 
-            this.getAnswerButton.Location = new System.Drawing.Point(226, 264);
+            this.getAnswerButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.getAnswerButton.Location = new System.Drawing.Point(238, 264);
             this.getAnswerButton.Name = "getAnswerButton";
-            this.getAnswerButton.Size = new System.Drawing.Size(70, 58);
+            this.getAnswerButton.Size = new System.Drawing.Size(72, 60);
             this.getAnswerButton.TabIndex = 5;
             this.getAnswerButton.TabStop = false;
             this.getAnswerButton.Text = "=";
@@ -256,9 +261,9 @@
             // divideButton
             // 
             this.divideButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.divideButton.Location = new System.Drawing.Point(226, 69);
+            this.divideButton.Location = new System.Drawing.Point(238, 69);
             this.divideButton.Name = "divideButton";
-            this.divideButton.Size = new System.Drawing.Size(70, 58);
+            this.divideButton.Size = new System.Drawing.Size(72, 58);
             this.divideButton.TabIndex = 2;
             this.divideButton.Text = "/";
             this.divideButton.UseVisualStyleBackColor = true;
@@ -267,9 +272,9 @@
             // multiplyButton
             // 
             this.multiplyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.multiplyButton.Location = new System.Drawing.Point(226, 4);
+            this.multiplyButton.Location = new System.Drawing.Point(238, 4);
             this.multiplyButton.Name = "multiplyButton";
-            this.multiplyButton.Size = new System.Drawing.Size(70, 58);
+            this.multiplyButton.Size = new System.Drawing.Size(72, 58);
             this.multiplyButton.TabIndex = 1;
             this.multiplyButton.Text = "*";
             this.multiplyButton.UseVisualStyleBackColor = true;
@@ -277,9 +282,10 @@
             // 
             // clearButton
             // 
+            this.clearButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clearButton.Location = new System.Drawing.Point(4, 199);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(67, 58);
+            this.clearButton.Size = new System.Drawing.Size(71, 58);
             this.clearButton.TabIndex = 6;
             this.clearButton.Text = "C";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -291,7 +297,7 @@
             this.backspaceButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.backspaceButton.Location = new System.Drawing.Point(4, 264);
             this.backspaceButton.Name = "backspaceButton";
-            this.backspaceButton.Size = new System.Drawing.Size(215, 60);
+            this.backspaceButton.Size = new System.Drawing.Size(227, 60);
             this.backspaceButton.TabIndex = 8;
             this.backspaceButton.Text = "backspace";
             this.backspaceButton.UseVisualStyleBackColor = true;
@@ -299,6 +305,8 @@
             // 
             // answerLabel
             // 
+            this.answerLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.answerLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.answerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.answerLabel.Location = new System.Drawing.Point(53, 82);
@@ -310,9 +318,13 @@
             // 
             // operatorLabel
             // 
+            this.operatorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.operatorLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.operatorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.operatorLabel.Location = new System.Drawing.Point(2, 82);
+            this.operatorLabel.MaximumSize = new System.Drawing.Size(45, 73);
+            this.operatorLabel.MinimumSize = new System.Drawing.Size(45, 73);
             this.operatorLabel.Name = "operatorLabel";
             this.operatorLabel.Size = new System.Drawing.Size(45, 73);
             this.operatorLabel.TabIndex = 3;
@@ -326,6 +338,7 @@
             this.Controls.Add(this.operatorLabel);
             this.Controls.Add(this.answerLabel);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximumSize = new System.Drawing.Size(1000, 541);
             this.MinimumSize = new System.Drawing.Size(332, 541);
             this.Name = "Calc";
             this.Text = "Calculator";
