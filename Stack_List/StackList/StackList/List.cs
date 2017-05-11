@@ -233,6 +233,10 @@ namespace StackList
                 }
                 if (enumerator == null)
                 {
+                    if (head == null)
+                    {
+                        return false;
+                    }
                     enumerator = head;
                     return true;
                 }

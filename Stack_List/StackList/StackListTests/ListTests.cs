@@ -121,6 +121,12 @@ namespace StackList.Tests
                 ++j;   
             }
             Assert.AreEqual(3, j);
+            list.Clear();
+            foreach(var i in list)
+            {
+                ++j;
+            }
+            Assert.AreEqual(3, j);
         }
     }
 }
