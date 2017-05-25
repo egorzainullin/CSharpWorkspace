@@ -16,6 +16,11 @@ namespace GenericSet
         private Dictionary<T, T> dictionary = new Dictionary<T, T>();
 
         /// <summary>
+        /// Количество элементов в множестве
+        /// </summary>
+        public int Count => dictionary.Count;
+
+        /// <summary>
         /// Получить генериковый энумератор
         /// </summary>
         /// <returns>Генериковый энумератор</returns>
