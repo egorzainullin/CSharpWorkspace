@@ -6,22 +6,20 @@ namespace StackList
     {
         public static bool Test1()
         {
-            Stack stack = new Stack();
+            var stack = new Stack<int>();
             stack.Push(1);
             stack.Push(2);
             stack.Push(3);
             stack.Pop();
-            stack.Print();
             Console.WriteLine("====");
             Console.WriteLine(stack.Length);
             Console.WriteLine("====");
-            List list = new List();
+            var list = new List<int>();
             list.Add(4);
             list.Add(3);
             list.Add(4);
             list.Add(4);
             list.Remove(4);
-            list.Print();
             Console.WriteLine("====");
             Console.WriteLine(list.Peek());
             Console.WriteLine(list.Length);
@@ -32,6 +30,19 @@ namespace StackList
         static void Main(string[] args)
         {
             Console.WriteLine(Test1());
+            Console.WriteLine("====");
+            var list = new List<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            foreach(int i in list)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine("====");
+            var enumerator = list.GetEnumerator();
+            enumerator.MoveNext();
+            Console.WriteLine(enumerator.Current);
         }
     }
 }
